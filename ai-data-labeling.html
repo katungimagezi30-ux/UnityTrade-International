@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Labeling Services - Unity Trade International</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0066cc;
+            --accent-blue: #0099ff;
+            --light-blue: #e6f2ff;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --success: #00cc66;
+            --warning: #ff9900;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-blue);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--medium-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--primary-blue);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Service Header */
+        .service-header {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .service-header h1 {
+            color: var(--white);
+        }
+        
+        .service-header h1:after {
+            background-color: var(--accent-blue);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .service-header p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        /* Service Detail */
+        .service-detail {
+            padding: 100px 0;
+        }
+        
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .service-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .benefit-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .benefit-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profit-impact {
+            background-color: var(--light-blue);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 5px solid var(--success);
+        }
+        
+        .profit-impact h3 {
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, rgba(255,255,255,1) 100%);
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3:after {
+            background-color: var(--accent-blue);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-header {
+                padding: 150px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="color: inherit;">
+                    <div class="logo-text">UNITY <span>TRADE</span> INTERNATIONAL</div>
+                </a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="ai-data-labeling.html" style="color: var(--secondary-blue);">AI Data Labeling</a></li>
+                <li><a href="customer-support.html">Customer Support</a></li>
+                <li><a href="content-social-media.html">Content & Social Media</a></li>
+                <li><a href="ecommerce-marketplace.html">E-commerce Marketplace</a></li>
+                <li><a href="web-design-management.html">Web Design & Management</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Service Header -->
+    <div class="service-header">
+        <div class="container">
+            <h1 data-aos="fade-up">AI Data Labeling Services</h1>
+            <p data-aos="fade-up" data-aos-delay="100">High-quality, accurate data annotation for machine learning and artificial intelligence applications. Our Ugandan-based workforce provides scalable solutions with quick turnaround times.</p>
+            <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20am%20interested%20in%20your%20AI%20Data%20Labeling%20services." target="_blank" class="btn btn-whatsapp" style="margin-top: 30px;">
+                <i class="fab fa-whatsapp"></i> Contact Us via WhatsApp
+            </a>
+        </div>
+    </div>
+    
+    <!-- Service Detail -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-content">
+                <div data-aos="fade-right" data-aos-delay="100">
+                    <h2>Precision Data Annotation for AI Training</h2>
+                    <p>Our AI data labeling services provide the accurate, high-quality annotated data that machine learning models need to perform effectively. With a workforce of over 1,000 trained professionals, we deliver scalable solutions for companies worldwide.</p>
+                    
+                    <h3>How This Service Helps Your Business Scale & Increase Profits</h3>
+                    
+                    <div class="profit-impact" data-aos="zoom-in" data-aos-delay="300">
+                        <h3>Direct Profit Impact</h3>
+                        <p><strong>Cost Reduction:</strong> By outsourcing your AI data labeling needs to us, you save 40-60% compared to in-house teams or developed country providers.</p>
+                        <p><strong>Faster Time-to-Market:</strong> Our scalable workforce can handle large datasets quickly, reducing your development cycle by 30-50%.</p>
+                        <p><strong>Improved Model Accuracy:</strong> Higher quality labeled data leads to more accurate AI models, increasing the value of your AI products and services.</p>
+                    </div>
+                    
+                    <h3>Our Data Labeling Services</h3>
+                    <ul class="benefit-list" data-aos="fade-up" data-aos-delay="400">
+                        <li data-aos="fade-right" data-aos-delay="100"><strong>Image Annotation:</strong> Bounding boxes, polygon annotation, semantic segmentation for computer vision applications</li>
+                        <li data-aos="fade-right" data-aos-delay="200"><strong>Text Classification:</strong> Sentiment analysis, topic categorization, intent recognition for NLP models</li>
+                        <li data-aos="fade-right" data-aos-delay="300"><strong>Audio Transcription:</strong> Accurate speech-to-text conversion for voice recognition systems</li>
+                        <li data-aos="fade-right" data-aos-delay="400"><strong>Video Labeling:</strong> Object tracking, activity recognition, and scene understanding</li>
+                        <li data-aos="fade-right" data-aos-delay="500"><strong>Data Moderation:</strong> Content filtering, inappropriate content detection, and quality assurance</li>
+                        <li data-aos="fade-right" data-aos-delay="600"><strong>Custom Annotation:</strong> Tailored solutions for specialized AI applications in healthcare, agriculture, finance, and more</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="service-image">
+                        <div class="service-image-placeholder">
+                            <div style="text-align: center; padding: 20px;">
+                                <i class="fas fa-robot" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                                <p>AI Data Labeling Solutions</p>
+                                <p style="font-size: 1rem; margin-top: 10px;">High-quality training data for machine learning</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <h3>Scalability Benefits</h3>
+                        <ul class="benefit-list">
+                            <li><strong>Elastic Workforce:</strong> Scale from 10 to 1,000 annotators based on your project needs</li>
+                            <li><strong>24/7 Operations:</strong> Our three-shift system ensures continuous progress on your projects</li>
+                            <li><strong>Quality Assurance:</strong> Multi-level verification process ensures 99%+ accuracy rates</li>
+                            <li><strong>Technology Integration:</strong> Seamless integration with your existing tools and platforms</li>
+                            <li><strong>Data Security:</strong> ISO 27001 compliant processes to protect your sensitive data</li>
+                            <li><strong>Competitive Pricing:</strong> African-market rates with Western-quality standards</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="profit-impact" style="margin-top: 40px;">
+                        <h3>Business Growth Potential</h3>
+                        <p><strong>New Revenue Streams:</strong> Develop AI products and services you couldn't previously afford to create</p>
+                        <p><strong>Competitive Advantage:</strong> Faster AI development gives you first-mover advantage in your market</p>
+                        <p><strong>Client Attraction:</strong> High-quality AI capabilities attract premium clients and larger contracts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2 data-aos="zoom-in" data-aos-delay="100">Ready to Accelerate Your AI Development?</h2>
+            <p>Join companies worldwide who trust us with their AI data labeling needs. Get started with a free pilot project to experience our quality and speed.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20would%20like%20to%20discuss%20AI%20Data%20Labeling%20for%20my%20business." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Start a Conversation
+                </a>
+                <a href="index.html#contact" class="btn">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Unity Trade International</h3>
+                    <p>Providing comprehensive digital solutions for Ugandan businesses to thrive in the modern economy.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="ai-data-labeling.html">AI Data Labeling</a>
+                    <a href="customer-support.html">Customer Support</a>
+                    <a href="content-social-media.html">Content & Social Media</a>
+                    <a href="ecommerce-marketplace.html">E-commerce Marketplace</a>
+                    <a href="web-design-management.html">Web Design & Management</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Kampala, Uganda</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 763 832 123</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> unitytrade33@gmail.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">All Services</a>
+                    <a href="index.html#contact">Contact Us</a>
+                    <a href="https://wa.me/256763832123" target="_blank">WhatsApp Chat</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Unity Trade International. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20am%20interested%20in%20your%20AI%20Data%20Labeling%20services." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
+</body>
+</html>

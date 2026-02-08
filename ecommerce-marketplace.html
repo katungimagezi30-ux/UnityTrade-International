@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Marketplace - Unity Trade International</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0066cc;
+            --accent-blue: #0099ff;
+            --light-blue: #e6f2ff;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --success: #00cc66;
+            --warning: #ff9900;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-blue);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--medium-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--primary-blue);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Service Header */
+        .service-header {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #00cc66 0%, #00cc99 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .service-header h1 {
+            color: var(--white);
+        }
+        
+        .service-header h1:after {
+            background-color: #00994d;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .service-header p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        /* Service Detail */
+        .service-detail {
+            padding: 100px 0;
+        }
+        
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .service-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #00cc66 0%, #00cc99 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .benefit-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .benefit-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
+            background-color: #e6fff2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profit-impact {
+            background-color: #e6fff2;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 5px solid #00cc66;
+        }
+        
+        .profit-impact h3 {
+            color: #00cc66;
+            margin-bottom: 20px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e6fff2 0%, rgba(255,255,255,1) 100%);
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3:after {
+            background-color: var(--accent-blue);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-header {
+                padding: 150px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" style="color: inherit;">
+                    <div class="logo-text">UNITY <span>TRADE</span> INTERNATIONAL</div>
+                </a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="ai-data-labeling.html">AI Data Labeling</a></li>
+                <li><a href="customer-support.html">Customer Support</a></li>
+                <li><a href="content-social-media.html">Content & Social Media</a></li>
+                <li><a href="ecommerce-marketplace.html" style="color: var(--secondary-blue);">E-commerce Marketplace</a></li>
+                <li><a href="web-design-management.html">Web Design & Management</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Service Header -->
+    <div class="service-header">
+        <div class="container">
+            <h1 data-aos="fade-up">E-commerce Marketplace for Ugandan Businesses</h1>
+            <p data-aos="fade-up" data-aos-delay="100">A dedicated platform connecting Ugandan sellers with buyers across the country. List your products, manage orders, and grow your business with our comprehensive e-commerce solution.</p>
+            <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20am%20interested%20in%20your%20E-commerce%20Marketplace%20services." target="_blank" class="btn btn-whatsapp" style="margin-top: 30px;">
+                <i class="fab fa-whatsapp"></i> Contact Us via WhatsApp
+            </a>
+        </div>
+    </div>
+    
+    <!-- Service Detail -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-content">
+                <div data-aos="fade-right" data-aos-delay="100">
+                    <h2>Sell to Customers Across Uganda</h2>
+                    <p>Our e-commerce marketplace provides Ugandan businesses with a platform to reach customers nationwide. We handle the technology, payment processing, and logistics, so you can focus on growing your business.</p>
+                    
+                    <div class="profit-impact" data-aos="zoom-in" data-aos-delay="300">
+                        <h3>Direct Profit Impact</h3>
+                        <p><strong>Market Expansion:</strong> Reach customers across all regions of Uganda, increasing your potential market by 500-1000%.</p>
+                        <p><strong>Reduced Overhead Costs:</strong> No need for physical stores in multiple locations, reducing rental and operational costs by 60-80%.</p>
+                        <p><strong>Increased Sales Volume:</strong> 24/7 online store operation increases sales opportunities beyond traditional business hours.</p>
+                        <p><strong>Lower Customer Acquisition Costs:</strong> Digital marketing on our platform is 40-60% cheaper than traditional advertising.</p>
+                    </div>
+                    
+                    <h3>Our E-commerce Marketplace Features</h3>
+                    <ul class="benefit-list" data-aos="fade-up" data-aos-delay="100">
+                        <li data-aos="fade-up" data-aos-delay="100"><strong>Easy Product Listing:</strong> User-friendly dashboard to list, manage, and update products with images and descriptions</li>
+                        <li data-aos="fade-up" data-aos-delay="200"><strong>Secure Payment Processing:</strong> Integration with MTN Mobile Money, Airtel Money, and credit/debit cards</li>
+                        <li data-aos="fade-up" data-aos-delay="300"><strong>Order Management System:</strong> Track orders, manage inventory, and process refunds seamlessly</li>
+                        <li data-aos="fade-up" data-aos-delay="400"><strong>Delivery Coordination:</strong> Partnership with reliable delivery services across Uganda</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><strong>Customer Reviews & Ratings:</strong> Build trust with verified customer feedback system</li>
+                        <li data-aos="fade-up" data-aos-delay="600"><strong>Marketing Tools:</strong> Promotional tools, discount codes, and featured listings to boost sales</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="service-image">
+                        <div class="service-image-placeholder">
+                            <div style="text-align: center; padding: 20px;">
+                                <i class="fas fa-shopping-cart" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                                <p>Ugandan E-commerce Marketplace</p>
+                                <p style="font-size: 1rem; margin-top: 10px;">Sell to customers nationwide</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <h3>Scalability Benefits</h3>
+                        <ul class="benefit-list">
+                            <li><strong>Mobile-First Platform:</strong> Optimized for smartphones, the primary internet device for 90% of Ugandans</li>
+                            <li><strong>Multi-Seller Support:</strong> Infrastructure to support hundreds of sellers with thousands of products</li>
+                            <li><strong>Inventory Management:</strong> Real-time stock tracking and automated low-stock alerts</li>
+                            <li><strong>Analytics Dashboard:</strong> Sales reports, customer insights, and performance metrics</li>
+                            <li><strong>Seller Training:</strong> Regular training on e-commerce best practices and digital marketing</li>
+                            <li><strong>Customer Support Integration:</strong> Seamless connection with our customer support services</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="profit-impact" style="margin-top: 40px;">
+                        <h3>Business Growth Potential</h3>
+                        <p><strong>Data-Driven Decisions:</strong> Sales analytics help you identify best-selling products and customer preferences.</p>
+                        <p><strong>Brand Building:</strong> Professional online presence establishes your brand in the digital marketplace.</p>
+                        <p><strong>Export Opportunities:</strong> Successful local sales provide foundation for regional expansion.</p>
+                        <p><strong>Resilience:</strong> Diversified sales channels protect against local market fluctuations and disruptions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2 data-aos="zoom-in" data-aos-delay="100">Ready to Expand Your Market Reach?</h2>
+            <p>Join hundreds of Ugandan businesses selling successfully on our marketplace. Start with a free seller account and see your business grow.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20would%20like%20to%20discuss%20E-commerce%20Marketplace%20for%20my%20business." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Start a Conversation
+                </a>
+                <a href="index.html#contact" class="btn">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Unity Trade International</h3>
+                    <p>Providing comprehensive digital solutions for Ugandan businesses to thrive in the modern economy.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="ai-data-labeling.html">AI Data Labeling</a>
+                    <a href="customer-support.html">Customer Support</a>
+                    <a href="content-social-media.html">Content & Social Media</a>
+                    <a href="ecommerce-marketplace.html">E-commerce Marketplace</a>
+                    <a href="web-design-management.html">Web Design & Management</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Kampala, Uganda</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 763 832 123</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> unitytrade33@gmail.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">All Services</a>
+                    <a href="index.html#contact">Contact Us</a>
+                    <a href="https://wa.me/256763832123" target="_blank">WhatsApp Chat</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Unity Trade International. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20am%20interested%20in%20your%20E-commerce%20Marketplace%20services." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
+</body>
+</html>

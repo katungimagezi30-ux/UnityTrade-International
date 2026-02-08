@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Trade International - Digital Solutions for Modern Businesses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0066cc;
+            --accent-blue: #0099ff;
+            --light-blue: #e6f2ff;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --success: #00cc66;
+            --warning: #ff9900;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-blue);
+            animation: expandLine 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+        
+        @keyframes expandLine {
+            from { width: 0; opacity: 0; }
+            to { width: 60px; opacity: 1; }
+        }
+        
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--medium-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-blue);
+            color: var(--secondary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+        }
+        
+        /* Header Styles with Logo */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        /*
+        .logo-circle {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .logo-circle:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 102, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--primary-blue);
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, rgba(255,255,255,1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23003366" opacity="0.03"/></svg>');
+            background-size: cover;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--medium-gray);
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* Services Overview Section */
+        .services-overview {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .service-card:hover:before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 51, 102, 0.1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            background-color: var(--secondary-blue);
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Price Preview Section */
+        .price-preview {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .price-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .price-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--light-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--accent-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .price-card:hover:after {
+            transform: scaleX(1);
+        }
+        
+        .price-card:hover {
+            border-color: var(--secondary-blue);
+            transform: translateY(-5px);
+        }
+        
+        .price-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .price-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .price-period {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        .price-card .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3:after {
+            background-color: var(--accent-blue);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-top: 25px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info p {
+            margin-left: 30px;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            animation: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                margin-left: 20px;
+            }
+            
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .hero:before {
+                width: 100%;
+                opacity: 0.1;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .logo-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .price-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .logo-circle {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header data-aos="fade-down">
+        <div class="container header-container">
+            <div  class="logo-container">
+                <div>
+                    <img class="logo-circle" style="width: 80px; height: 80px;" src="UnityTrade-icon.png">
+                </div>
+                <div class="logo-text">
+                    UNITY <span>TRADE</span> INTERNATIONAL
+                </div>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="pricing.html">Price Packages</a></li>
+                <li><a href="#price-preview">Prices</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-delay="100">Digital Solutions for Modern Ugandan Businesses</h1>
+                <p data-aos="fade-up" data-aos-delay="200">Unity Trade International provides cutting-edge digital services tailored for small to mid-sized businesses in Uganda. From AI data labeling to complete e-commerce solutions, we help you thrive in the digital economy.</p>
+                <div class="hero-btns" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20would%20like%20to%20learn%20more%20about%20your%20services." target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Get in Touch via WhatsApp
+                    </a>
+                    <a href="pricing.html" class="btn">View Price Packages</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="services-overview">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Our Professional Services</h2>
+                <p data-aos="fade-up" data-aos-delay="100">We offer a comprehensive suite of digital services designed to help Ugandan businesses compete in the modern marketplace and increase profitability.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Data Labeling</h3>
+                    <p>High-quality data annotation and labeling services for machine learning and AI training. We provide accurate, scalable solutions for AI companies worldwide.</p>
+                    <a href="ai-data-labeling.html" class="btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Customer Support</h3>
+                    <p>24/7 multilingual customer support services tailored for Ugandan businesses. Our trained agents provide exceptional customer experiences.</p>
+                    <a href="customer-support.html" class="btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Content & Social Media</h3>
+                    <p>Professional content creation and social media management that builds your brand and engages your audience across all platforms.</p>
+                    <a href="content-social-media.html" class="btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Marketplace</h3>
+                    <p>A dedicated platform for Ugandan businesses to sell products and services locally. Connect with customers across the country.</p>
+                    <a href="e-commerce-marketplace.html" class="btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Design & Management</h3>
+                    <p>Complete website solutions including design, development, hosting, domain registration, and ongoing maintenance for businesses.</p>
+                    <a href="web-design-management.html" class="btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Preview Section -->
+    <section id="price-preview" class="price-preview">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Transparent Pricing Starting From</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Clear, competitive pricing designed for Ugandan businesses. No hidden fees, no surprises.</p>
+            </div>
+            <div class="price-highlights">
+                <div class="price-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>AI Data Labeling</h3>
+                    <div class="price-amount">1,846,300 UGX</div>
+                    <div class="price-period">per month</div>
+                    <p>High-quality AI training data</p>
+                    <a href="pricing.html#ai-pricing" class="btn">View Packages</a>
+                </div>
+                
+                <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Customer Support</h3>
+                    <div class="price-amount">499,000 UGX</div>
+                    <div class="price-period">per month</div>
+                    <p>24/7 multilingual support</p>
+                    <a href="pricing.html#support-pricing" class="btn">View Packages</a>
+                </div>
+                
+                <div class="price-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Content & Social</h3>
+                    <div class="price-amount">299,000 UGX</div>
+                    <div class="price-period">per month</div>
+                    <p>Professional content creation</p>
+                    <a href="pricing.html#content-pricing" class="btn">View Packages</a>
+                </div>
+                
+                <div class="price-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>E-commerce</h3>
+                    <div class="price-amount">49,000 UGX</div>
+                    <div class="price-period">per month</div>
+                    <p>Complete marketplace solution</p>
+                    <a href="pricing.html#ecommerce-pricing" class="btn">View Packages</a>
+                </div>
+                
+                <div class="price-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>Web Design</h3>
+                    <div class="price-amount">699,000 UGX</div>
+                    <div class="price-period">one-time setup</div>
+                    <p>Professional website creation</p>
+                    <a href="pricing.html#web-pricing" class="btn">View Packages</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;" data-aos="zoom-in" data-aos-delay="600">
+                <a href="pricing.html" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-chart-bar"></i> View Complete Price Packages
+                </a>
+                <p style="margin-top: 20px; color: var(--medium-gray);">All prices in Ugandan Shillings (UGX)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Contact Us</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Ready to transform your business with our digital services? Get in touch with us today for a free consultation.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div data-aos="fade-right" data-aos-delay="200">
+                    <h2>Get In Touch</h2>
+                    <p>We're here to help you navigate the digital landscape and find the right solutions for your business needs. Contact us today to discuss how we can work together.</p>
+                    
+                    <div class="contact-info">
+                        <h3><i class="fas fa-map-marker-alt" style="color: var(--secondary-blue); margin-right: 10px;"></i> Our Location</h3>
+                        <p>Kampala, Uganda</p>
+                        
+                        <h3><i class="fas fa-phone" style="color: var(--secondary-blue); margin-right: 10px;"></i> Phone</h3>
+                        <p>+256 763 832 123</p>
+                        
+                        <h3><i class="fas fa-envelope" style="color: var(--secondary-blue); margin-right: 10px;"></i> Email</h3>
+                        <p>unitytrade33@gmail.com</p>
+                        
+                        <h3><i class="fas fa-clock" style="color: var(--secondary-blue); margin-right: 10px;"></i> Business Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="200">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" action="https://formspree.io/f/xykdyrgz" method="POST" style="margin-top: 20px;">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission from Unity Trade International">
+                        <input type="hidden" name="_replyto" id="email" value="">
+                        
+                        <div style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="300">
+                            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 500;">Full Name *</label>
+                            <input type="text" id="name" name="name" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Inter', sans-serif;" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="400">
+                            <label for="form-email" style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address *</label>
+                            <input type="email" id="form-email" name="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Inter', sans-serif;" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="500">
+                            <label for="service" style="display: block; margin-bottom: 8px; font-weight: 500;">Service Interested In</label>
+                            <select id="service" name="service" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Inter', sans-serif;">
+                                <option value="">Select a service</option>
+                                <option value="ai-labeling">AI Data Labeling</option>
+                                <option value="customer-support">Customer Support</option>
+                                <option value="content-social">Content & Social Media</option>
+                                <option value="ecommerce">E-commerce Marketplace</option>
+                                <option value="web-design">Web Design & Management</option>
+                                <option value="multiple">Multiple Services</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="600">
+                            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 500;">Message *</label>
+                            <textarea id="message" name="message" rows="5" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Inter', sans-serif;" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;" data-aos="fade-up" data-aos-delay="700">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Unity Trade International</h3>
+                    <p>Providing comprehensive digital solutions for Ugandan businesses to thrive in the modern economy. We specialize in AI data labeling, customer support, content creation, e-commerce, and web design services.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Our Services</h3>
+                    <a href="#services">AI Data Labeling</a>
+                    <a href="#services">Customer Support</a>
+                    <a href="#services">Content & Social Media</a>
+                    <a href="#services">E-commerce Marketplace</a>
+                    <a href="#services">Web Design & Management</a>
+                </div>
+                
+                <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Kampala, Uganda</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 763 832 123</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> unitytrade33@gmail.com</p>
+                </div>
+                
+                <div class="footer-column" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="pricing.html">Price Packages</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="copyright" data-aos="fade-up">
+                <p>&copy; 2023 Unity Trade International. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20would%20like%20to%20learn%20more%20about%20your%20services." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('form-email').value;
+                const message = document.getElementById('message').value;
+                
+                if (!name || !email || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                contactForm.reset();
+            });
+        }
+        
+        // Update email field for reply-to
+        const emailField = document.getElementById('form-email');
+        const hiddenEmail = document.getElementById('email');
+        
+        if (emailField && hiddenEmail) {
+            emailField.addEventListener('input', function() {
+                hiddenEmail.value = this.value;
+            });
+        }
+    </script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

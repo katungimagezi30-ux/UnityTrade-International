@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Packages - Unity Trade International</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0066cc;
+            --accent-blue: #0099ff;
+            --light-blue: #e6f2ff;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --success: #00cc66;
+            --warning: #ff9900;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-blue);
+        }
+        
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--medium-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Header Styles with Logo */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        /*
+        .logo-circle {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.2);
+        }
+        
+        .logo-circle:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }*/
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--primary-blue);
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu a.active {
+            color: var(--secondary-blue);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 80px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            color: var(--white);
+        }
+        
+        .page-header h1:after {
+            background-color: var(--accent-blue);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .page-header p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .service-pricing {
+            margin-bottom: 100px;
+            scroll-margin-top: 100px;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid var(--light-blue);
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 51, 102, 0.1);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--secondary-blue);
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            padding: 6px 25px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .price-period {
+            color: var(--medium-gray);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .daily-cost {
+            background-color: var(--light-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table .check {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, rgba(255,255,255,1) 100%);
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3:after {
+            background-color: var(--accent-blue);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu li {
+                margin-left: 20px;
+            }
+            
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .page-header {
+                padding: 150px 0 60px;
+            }
+            
+            .comparison-table {
+                overflow-x: auto;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .logo-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .price-amount {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+            
+            .logo-circle {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div >
+                    <img class="logo-circle" style="width: 80px; height: 80px;" src="UnityTrade-icon.png">
+                </div>
+                <div class="logo-text">
+                    UNITY <span>TRADE</span> INTERNATIONAL
+                </div>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="pricing.html" class="active">Price Packages</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Transparent Price Packages</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Clear, competitive pricing in Ugandan Shillings (UGX). Choose the package that fits your business needs.</p>
+            <div style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
+                <a href="#ai-pricing" class="btn btn-small">AI Data Labeling</a>
+                <a href="#support-pricing" class="btn btn-small">Customer Support</a>
+                <a href="#content-pricing" class="btn btn-small">Content & Social</a>
+                <a style="margin-top: 10px;" href="#ecommerce-pricing" class="btn btn-small">E-commerce</a>
+                <a style="margin-top: 10px;" href="#web-pricing" class="btn btn-small">Web Design</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Data Labeling Pricing -->
+    <section id="ai-pricing" class="pricing-section">
+        <div class="container">
+            <div class="service-pricing">
+                <div class="section-title">
+                    <h2>AI Data Labeling Packages</h2>
+                    <p>High-quality data annotation for machine learning and AI training (Prices converted from USD to UGX)</p>
+                </div>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Starter Package</h3>
+                        <div class="price-amount">1,846,300 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈61,500 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>5,000 images labeled monthly</li>
+                            <li>Basic annotation types</li>
+                            <li>5-day turnaround time</li>
+                            <li>Standard quality assurance</li>
+                            <li>Email support</li>
+                            <li>Basic reporting</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Professional Package</h3>
+                        <div class="price-amount">
+                            <span class="original-price">4,806,300 UGX</span> 4,063,000 UGX
+                        </div>
+                        <div class="price-period">per month (Save 15%)</div>
+                        <div class="daily-cost">≈135,400 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>25,000 images labeled monthly</li>
+                            <li>Advanced annotation types</li>
+                            <li>2-day turnaround time</li>
+                            <li>Enhanced quality assurance</li>
+                            <li>Priority support</li>
+                            <li>Custom annotation guidelines</li>
+                            <li>Detailed analytics reports</li>
+                            <li>Monthly strategy consultation</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I'm%20interested%20in%20the%20Professional%20AI%20Data%20Labeling%20package." target="_blank" class="btn">Start Free Trial</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Enterprise Package</h3>
+                        <div class="price-amount">Custom Pricing</div>
+                        <div class="price-period">tailored to your needs</div>
+                        
+                        <ul class="features-list">
+                            <li>Unlimited data labeling volume</li>
+                            <li>All annotation types available</li>
+                            <li>24-hour turnaround time</li>
+                            <li>Dedicated quality assurance team</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom integration options</li>
+                            <li>Real-time progress tracking</li>
+                            <li>SLA guarantee</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Request Custom Quote</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customer Support Pricing -->
+            <div id="support-pricing" class="service-pricing">
+                <div class="section-title">
+                    <h2>Customer Support Packages</h2>
+                    <p>24/7 multilingual support for Ugandan businesses</p>
+                </div>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Essential Support</h3>
+                        <div class="price-amount">499,000 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈16,600 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>2 dedicated support agents</li>
+                            <li>8 hours/day coverage (Mon-Fri)</li>
+                            <li>Email & chat support only</li>
+                            <li>Basic ticketing system</li>
+                            <li>Monthly performance report</li>
+                            <li>Standard response training</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">BEST VALUE</div>
+                        <h3>Growth Support</h3>
+                        <div class="price-amount">
+                            <span class="original-price">1,200,000 UGX</span> <br> 899,000 UGX
+                        </div>
+                        <div class="price-period">per month (Save 25%)</div>
+                        <div class="daily-cost">≈30,000 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>5 dedicated support agents</li>
+                            <li>24/7 coverage including weekends</li>
+                            <li>All channels: Phone, email, chat, social</li>
+                            <li>Advanced ticketing system</li>
+                            <li>Weekly performance reports</li>
+                            <li>Advanced agent training</li>
+                            <li>Customer satisfaction surveys</li>
+                            <li>30-day money-back guarantee</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I'm%20interested%20in%20the%20Growth%20Customer%20Support%20package." target="_blank" class="btn">Start Free 7-Day Trial</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Enterprise Support</h3>
+                        <div class="price-amount">1,499,000 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈50,000 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>10+ dedicated support agents</li>
+                            <li>24/7 premium coverage</li>
+                            <li>Multi-language support</li>
+                            <li>Custom CRM integration</li>
+                            <li>Real-time analytics dashboard</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom training programs</li>
+                            <li>Performance-based bonuses</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content & Social Media Pricing -->
+            <div id="content-pricing" class="service-pricing">
+                <div class="section-title">
+                    <h2>Content & Social Media Packages</h2>
+                    <p>Professional content creation and social media management</p>
+                </div>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Basic Boost</h3>
+                        <div class="price-amount">299,000 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈10,000 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>20 posts per month</li>
+                            <li>2 social media platforms</li>
+                            <li>Basic graphic design</li>
+                            <li>Content calendar</li>
+                            <li>Monthly performance report</li>
+                            <li>Standard engagement</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Get Started</a>
+                    </div>
+                    
+                    <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Growth Engine</h3>
+                        <div class="price-amount">699,000 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈23,300 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>40 posts per month</li>
+                            <li>4 social media platforms</li>
+                            <li>Premium graphic design</li>
+                            <li>2 video creations per month</li>
+                            <li>Weekly performance reports</li>
+                            <li>Active community engagement</li>
+                            <li>Basic social media advertising</li>
+                            <li>Guaranteed 20% engagement increase</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I'm%20interested%20in%20the%20Growth%20Engine%20Content%20package." target="_blank" class="btn">Start Free Trial</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Complete Control</h3>
+                        <div class="price-amount">1,499,000 UGX</div>
+                        <div class="price-period">per month</div>
+                        <div class="daily-cost">≈50,000 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>60+ posts per month</li>
+                            <li>All social media platforms</li>
+                            <li>Professional video production</li>
+                            <li>Advanced social media advertising</li>
+                            <li>Daily performance monitoring</li>
+                            <li>Competitor analysis</li>
+                            <li>Influencer partnerships</li>
+                            <li>Brand strategy development</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Contact for Demo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- E-commerce Pricing -->
+            <div id="ecommerce-pricing" class="service-pricing">
+                <div class="section-title">
+                    <h2>E-commerce Marketplace Packages</h2>
+                    <p>Sell your products online across Uganda</p>
+                </div>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Starter Seller</h3>
+                        <div class="price-amount">FREE</div>
+                        <div class="price-period">+ 8% commission per sale</div>
+                        
+                        <ul class="features-list">
+                            <li>List up to 50 products</li>
+                            <li>Basic storefront</li>
+                            <li>Mobile money payments only</li>
+                            <li>Standard delivery options</li>
+                            <li>Basic order management</li>
+                            <li>Email support</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Sign Up Free</a>
+                    </div>
+                    
+                    <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">BEST SELLER</div>
+                        <h3>Growth Seller</h3>
+                        <div class="price-amount">49,000 UGX</div>
+                        <div class="price-period">per month + 5% commission</div>
+                        <div class="daily-cost">≈1,600 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>List up to 200 products</li>
+                            <li>Custom storefront design</li>
+                            <li>Multiple payment options</li>
+                            <li>Featured seller placement</li>
+                            <li>Advanced order management</li>
+                            <li>Priority support</li>
+                            <li>Sales analytics dashboard</li>
+                            <li>Marketing credits (50,000 UGX/month)</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I'm%20interested%20in%20the%20Growth%20Seller%20E-commerce%20package." target="_blank" class="btn">Start Selling</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Premium Seller</h3>
+                        <div class="price-amount">149,000 UGX</div>
+                        <div class="price-period">per month + 3% commission</div>
+                        <div class="daily-cost">≈5,000 UGX per day</div>
+                        
+                        <ul class="features-list">
+                            <li>Unlimited products</li>
+                            <li>Premium storefront design</li>
+                            <li>All payment gateways</li>
+                            <li>Top featured placement</li>
+                            <li>Inventory management system</li>
+                            <li>24/7 premium support</li>
+                            <li>Advanced sales analytics</li>
+                            <li>API access for integration</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Go Premium</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Design Pricing -->
+            <div id="web-pricing" class="service-pricing">
+                <div class="section-title">
+                    <h2>Web Design & Management Packages</h2>
+                    <p>Professional websites for Ugandan businesses</p>
+                </div>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Basic Website</h3>
+                        <div class="price-amount">699,000 UGX</div>
+                        <div class="price-period">one-time setup</div>
+                        <div class="daily-cost">+ 49,000 UGX/month maintenance</div>
+                        
+                        <ul class="features-list">
+                            <li>5-page responsive website</li>
+                            <li>Basic design template</li>
+                            <li>Contact form integration</li>
+                            <li>1-year domain registration</li>
+                            <li>1-year basic hosting</li>
+                            <li>3 months of support</li>
+                            <li>Basic SEO setup</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Get Quote</a>
+                    </div>
+                    
+                    <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Business Pro</h3>
+                        <div class="price-amount">1,499,000 UGX</div>
+                        <div class="price-period">one-time setup</div>
+                        <div class="daily-cost">+ 99,000 UGX/month maintenance</div>
+                        
+                        <ul class="features-list">
+                            <li>15-page custom website</li>
+                            <li>Custom design tailored to your brand</li>
+                            <li>Advanced SEO setup</li>
+                            <li>Contact forms & newsletter signup</li>
+                            <li>1-year domain registration</li>
+                            <li>1-year premium hosting with SSL</li>
+                            <li>6 months of support</li>
+                            <li>Content management system</li>
+                            <li>Mobile app responsive design</li>
+                            <li>Pay in 3 installments available</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I'm%20interested%20in%20the%20Business%20Pro%20Web%20Design%20package." target="_blank" class="btn">Start Project</a>
+                    </div>
+                    
+                    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>E-commerce Website</h3>
+                        <div class="price-amount">2,999,000 UGX</div>
+                        <div class="price-period">one-time setup</div>
+                        <div class="daily-cost">+ 199,000 UGX/month maintenance</div>
+                        
+                        <ul class="features-list">
+                            <li>Full online store setup</li>
+                            <li>Product catalog with up to 100 products</li>
+                            <li>Mobile money and card payment integration</li>
+                            <li>Advanced order management system</li>
+                            <li>Inventory tracking</li>
+                            <li>Advanced SEO configuration</li>
+                            <li>1-year domain registration</li>
+                            <li>1-year premium hosting with SSL</li>
+                            <li>12 months of support and maintenance</li>
+                            <li>Training for your team</li>
+                        </ul>
+                        
+                        <a href="index.html#contact" class="btn">Request Custom Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="comparison-table">
+        <div class="container">
+            <div class="section-title">
+                <h2>Package Comparison</h2>
+                <p>Compare features across our most popular packages</p>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Starter Packages</th>
+                        <th>Growth Packages</th>
+                        <th>Premium Packages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Support Hours</td>
+                        <td>Business Hours Only</td>
+                        <td class="check">24/7 Support</td>
+                        <td class="check">24/7 Premium Support</td>
+                    </tr>
+                    <tr>
+                        <td>Response Time</td>
+                        <td>24-48 hours</td>
+                        <td class="check">Under 4 hours</td>
+                        <td class="check">Under 1 hour</td>
+                    </tr>
+                    <tr>
+                        <td>Dedicated Account Manager</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Customization</td>
+                        <td>Limited</td>
+                        <td>Moderate</td>
+                        <td class="check">Full Customization</td>
+                    </tr>
+                    <tr>
+                        <td>Training & Onboarding</td>
+                        <td>Basic</td>
+                        <td class="check">Comprehensive</td>
+                        <td class="check">Premium + Ongoing</td>
+                    </tr>
+                    <tr>
+                        <td>Analytics & Reporting</td>
+                        <td>Monthly</td>
+                        <td class="check">Weekly</td>
+                        <td class="check">Real-time Dashboard</td>
+                    </tr>
+                    <tr>
+                        <td>Money-back Guarantee</td>
+                        <td>7 days</td>
+                        <td class="check">30 days</td>
+                        <td class="check">60 days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2 data-aos="zoom-in" data-aos-delay="100">Ready to Get Started?</h2>
+            <p>Choose the package that fits your business needs. All prices in Ugandan Shillings (UGX) with transparent billing.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20have%20questions%20about%20your%20price%20packages." target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="index.html#contact" class="btn">Request Custom Quote</a>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 20px; background-color: rgba(0, 51, 102, 0.05); border-radius: 10px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 1.2rem; margin-bottom: 10px;">💡 Special Offers</h3>
+                <p style="margin-bottom: 10px;"><strong>• Bundle Discount:</strong> Get 2 services, save 15% | Get 3+ services, save 25%</p>
+                <p style="margin-bottom: 10px;"><strong>• Annual Payment:</strong> Pay annually and get 2 months free</p>
+                <p><strong>• First 50 Customers:</strong> Lifetime 10% discount on all services</p>
+            </div>
+            <p style="margin-top: 40px;">Terms and Conditions apply</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Unity Trade International</h3>
+                    <p>Providing comprehensive digital solutions for Ugandan businesses to thrive in the modern economy.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="#ai-pricing">AI Data Labeling</a>
+                    <a href="#support-pricing">Customer Support</a>
+                    <a href="#content-pricing">Content & Social Media</a>
+                    <a href="#ecommerce-pricing">E-commerce Marketplace</a>
+                    <a href="#web-pricing">Web Design & Management</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Kampala, Uganda</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +256 763 832 123</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> unitytrade33@gmail.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="pricing.html">Price Packages</a>
+                    <a href="index.html#contact">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Unity Trade International. All rights reserved. All prices in Ugandan Shillings (UGX).</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/256763832123?text=Hello%20Unity%20Trade%20International!%20I%20have%20questions%20about%20your%20price%20packages." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth scrolling for anchor links on same page
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Only handle internal page anchors
+                if (href.startsWith('#') && href !== '#') {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Highlight current service when scrolled to
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.service-pricing');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
+</body>
+</html>
